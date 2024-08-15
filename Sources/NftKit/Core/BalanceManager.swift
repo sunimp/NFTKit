@@ -2,7 +2,7 @@ import BigInt
 import Combine
 import EvmKit
 import Foundation
-import HsExtensions
+import WWExtensions
 
 class BalanceManager {
     private let storage: Storage

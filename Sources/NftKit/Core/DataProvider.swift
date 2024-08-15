@@ -1,6 +1,6 @@
 import BigInt
 import EvmKit
-import HsExtensions
+import WWExtensions
 
 class DataProvider {
     private let evmKit: EvmKit.Kit
@@ -19,7 +19,7 @@ extension DataProvider {
     func getEip1155Balance(contractAddress: Address, owner: Address, tokenId: BigUInt) async throws -> Int {
         let data = try await evmKit.fetchCall(contractAddress: contractAddress, data: Eip1155BalanceOfMethod(owner: owner, tokenId: tokenId).encodedABI())
 
-        guard let value = BigUInt(data.prefix(32).hs.hex, radix: 16) else {
+        guard let value = BigUInt(data.prefix(32).ww.hex, radix: 16) else {
             throw ContractCallError.invalidBalanceData
         }
 

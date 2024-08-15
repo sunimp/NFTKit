@@ -11,7 +11,7 @@ class Eip721TransactionDecorator {
 
 extension Eip721TransactionDecorator: ITransactionDecorator {
     public func decoration(from: Address?, to: Address?, value: BigUInt?, contractMethod: ContractMethod?, internalTransactions _: [InternalTransaction], eventInstances: [ContractEventInstance]) -> TransactionDecoration? {
-        guard let from, let to, let value, let contractMethod else {
+        guard let from, let to, let contractMethod else {
             return nil
         }
 

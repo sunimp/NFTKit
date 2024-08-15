@@ -67,7 +67,7 @@ class Storage {
     }
 
     private func filter(nft: Nft) -> SQLSpecificExpressible {
-        var conditions: [SQLSpecificExpressible] = [
+        let conditions: [SQLSpecificExpressible] = [
             NftBalance.Columns.contractAddress == nft.contractAddress.raw,
             NftBalance.Columns.tokenId == nft.tokenId,
         ]
@@ -102,7 +102,7 @@ extension Storage {
     }
 
     func setNotSynced(nfts: [Nft]) throws {
-        try dbPool.write { db in
+        _ = try dbPool.write { db in
             try NftBalance
                 .filter(nfts.map { filter(nft: $0) }.joined(operator: .or))
                 .updateAll(db, NftBalance.Columns.synced.set(to: false))

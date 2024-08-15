@@ -87,7 +87,7 @@ sendSingle
     .subscribe(
         onSuccess: { fullTransaction in
             let transaction = fullTransaction.transaction
-            print("Transaction sent: \(transaction.hash.hs.hexString)")
+            print("Transaction sent: \(transaction.hash.ww.hexString)")
         }, onError: { error in
             print("Send failed: \(error)")
         }
@@ -102,11 +102,11 @@ sendSingle
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/horizontalsystems/NftKit.Swift.git", .upToNextMajor(from: "1.0.0"))
+    .package(url: "https://github.com/sunimp/NftKit.Swift.git", .upToNextMajor(from: "2.0.3"))
 ]
 ```
 
 ## License
 
-The `NftKit.Swift` toolkit is open source and available under the terms of the [MIT License](https://github.com/horizontalsystems/ethereum-kit-ios/blob/master/LICENSE).
+The `NftKit.Swift` toolkit is open source and available under the terms of the [MIT License](https://github.com/sunimp/ethereum-kit-ios/blob/master/LICENSE).
 

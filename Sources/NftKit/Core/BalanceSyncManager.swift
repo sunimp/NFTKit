@@ -1,7 +1,7 @@
 import BigInt
 import EvmKit
 import Foundation
-import HsExtensions
+import WWExtensions
 
 class BalanceSyncManager {
     private let address: Address

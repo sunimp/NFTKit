@@ -31,7 +31,7 @@ public class Kit {
             balanceSyncManager.sync()
         case .syncing:
             ()
-        case let .notSynced(error):
+        case .notSynced:
             ()
         }
     }
