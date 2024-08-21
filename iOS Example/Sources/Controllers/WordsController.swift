@@ -1,8 +1,17 @@
+//
+//  WordsController.swift
+//  NftKit-Example
+//
+//  Created by Sun on 2024/8/21.
+//
+
+import UIKit
+
 import EvmKit
 import HDWalletKit
 import NftKit
 import SnapKit
-import UIKit
+import UIExtensions
 
 class WordsController: UIViewController {
     private let textView = UITextView()

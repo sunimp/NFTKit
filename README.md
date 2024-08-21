@@ -102,11 +102,11 @@ sendSingle
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/sunimp/NftKit.Swift.git", .upToNextMajor(from: "2.0.3"))
+    .package(url: "https://github.com/sunimp/NftKit.Swift.git", .upToNextMajor(from: "2.0.4"))
 ]
 ```
 
 ## License
 
-The `NftKit.Swift` toolkit is open source and available under the terms of the [MIT License](https://github.com/sunimp/ethereum-kit-ios/blob/master/LICENSE).
+The `NftKit.Swift` toolkit is open source and available under the terms of the [MIT License](https://github.com/sunimp/NftKit.Swift/blob/master/LICENSE).
 

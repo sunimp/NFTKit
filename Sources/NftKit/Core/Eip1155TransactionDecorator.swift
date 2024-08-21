@@ -1,3 +1,12 @@
+//
+//  Eip1155TransactionDecorator.swift
+//  NftKit
+//
+//  Created by Sun on 2024/8/21.
+//
+
+import Foundation
+
 import BigInt
 import EvmKit
 

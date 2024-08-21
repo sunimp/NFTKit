@@ -1,6 +1,14 @@
+//
+//  Eip1155Event.swift
+//  NftKit
+//
+//  Created by Sun on 2024/8/21.
+//
+
+import Foundation
+
 import BigInt
 import EvmKit
-import Foundation
 import GRDB
 
 class Eip1155Event: Record {

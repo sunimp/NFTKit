@@ -1,6 +1,14 @@
+//
+//  Eip1155SafeTransferFromMethod.swift
+//  NftKit
+//
+//  Created by Sun on 2024/8/21.
+//
+
+import Foundation
+
 import BigInt
 import EvmKit
-import Foundation
 
 class Eip1155SafeTransferFromMethod: ContractMethod {
     static let methodSignature = "safeTransferFrom(address,address,uint256,uint256,bytes)"

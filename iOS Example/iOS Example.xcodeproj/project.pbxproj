@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		A47FB00A2C6E011400230DDD /* UIExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = A47FB0092C6E011400230DDD /* UIExtensions */; };
-		A47FB00C2C6E032900230DDD /* UIApplication+KeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47FB00B2C6E032900230DDD /* UIApplication+KeyWindow.swift */; };
 		D3500A2728ED564A0093A369 /* NftKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3500A2628ED564A0093A369 /* NftKit */; };
 		D36AAAC923A237940065B32B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36AAAAF23A237940065B32B /* Configuration.swift */; };
 		D36AAACA23A237940065B32B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36AAAB023A237940065B32B /* Assets.xcassets */; };
@@ -31,7 +30,6 @@
 		607FACD01AFB9204008FA782 /* NftKit Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NftKit Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A47FB00B2C6E032900230DDD /* UIApplication+KeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+KeyWindow.swift"; sourceTree = "<group>"; };
 		D36AAAAF23A237940065B32B /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		D36AAAB023A237940065B32B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D36AAAB223A237940065B32B /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 				D36AAAB023A237940065B32B /* Assets.xcassets */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				D36AAAAF23A237940065B32B /* Configuration.swift */,
-				A47FB00B2C6E032900230DDD /* UIApplication+KeyWindow.swift */,
 				D36AAAC823A237940065B32B /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
@@ -238,7 +235,6 @@
 				D36AAAD923A237940065B32B /* MainController.swift in Sources */,
 				D36AAACB23A237940065B32B /* Manager.swift in Sources */,
 				D36AAAD723A237940065B32B /* ReceiveController.swift in Sources */,
-				A47FB00C2C6E032900230DDD /* UIApplication+KeyWindow.swift in Sources */,
 				D36AAAD423A237940065B32B /* TransactionCell.swift in Sources */,
 				D36AAADC23A237940065B32B /* SendController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
@@ -371,7 +367,7 @@
 					"@executable_path/Frameworks",
 				);
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.horizontalsystems.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sunimp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "NftKit Demo";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -394,7 +390,7 @@
 					"@executable_path/Frameworks",
 				);
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.horizontalsystems.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sunimp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "NftKit Demo";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -434,7 +430,7 @@
 			repositoryURL = "https://github.com/sunimp/UIExtensions.Swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
+				minimumVersion = 1.1.0;
 			};
 		};
 		D36DFC2728EBDF5B00D2FC62 /* XCRemoteSwiftPackageReference "SnapKit" */ = {

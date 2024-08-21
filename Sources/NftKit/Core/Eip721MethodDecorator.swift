@@ -1,5 +1,13 @@
-import EvmKit
+//
+//  Eip721MethodDecorator.swift
+//  NftKit
+//
+//  Created by Sun on 2024/8/21.
+//
+
 import Foundation
+
+import EvmKit
 
 class Eip721MethodDecorator {
     private let contractMethodFactories: ContractMethodFactories

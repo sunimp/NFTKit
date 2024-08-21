@@ -1,6 +1,14 @@
+//
+//  BalanceSyncManager.swift
+//  NftKit
+//
+//  Created by Sun on 2024/8/21.
+//
+
+import Foundation
+
 import BigInt
 import EvmKit
-import Foundation
 import WWExtensions
 
 class BalanceSyncManager {
@@ -12,7 +20,7 @@ class BalanceSyncManager {
     private var syncing = false
     private var syncRequested = false
 
-    private let queue = DispatchQueue(label: "io.horizontal-systems.nft-kit.balance-sync-manager", qos: .userInitiated)
+    private let queue = DispatchQueue(label: "com.sunimp.nft-kit.balance-sync-manager", qos: .userInitiated)
 
     weak var delegate: IBalanceSyncManagerDelegate?
 
