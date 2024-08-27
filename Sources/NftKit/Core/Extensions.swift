@@ -10,8 +10,8 @@ import Foundation
 import BigInt
 import EvmKit
 
-public extension TransactionLog {
-    var eip721EventInstance: ContractEventInstance? {
+extension TransactionLog {
+    public var eip721EventInstance: ContractEventInstance? {
         guard let signature = topics.first else {
             return nil
         }
@@ -24,14 +24,14 @@ public extension TransactionLog {
                 contractAddress: address,
                 from: Address(raw: from),
                 to: Address(raw: to),
-                tokenId: BigUInt(data)
+                tokenID: BigUInt(data)
             )
         }
 
         return nil
     }
 
-    var eip1155EventInstance: ContractEventInstance? {
+    public var eip1155EventInstance: ContractEventInstance? {
         guard let _ = topics.first else {
             return nil
         }

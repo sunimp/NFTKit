@@ -10,6 +10,8 @@ import Foundation
 import BigInt
 import EvmKit
 
+// MARK: - Eip1155EventDecorator
+
 class Eip1155EventDecorator {
     private let userAddress: Address
     private let storage: Storage
@@ -19,6 +21,8 @@ class Eip1155EventDecorator {
         self.storage = storage
     }
 }
+
+// MARK: IEventDecorator
 
 extension Eip1155EventDecorator: IEventDecorator {
     public func contractEventInstancesMap(transactions: [Transaction]) -> [Data: [ContractEventInstance]] {
@@ -42,9 +46,15 @@ extension Eip1155EventDecorator: IEventDecorator {
                 contractAddress: event.contractAddress,
                 from: event.from,
                 to: event.to,
-                tokenId: event.tokenId,
+                tokenID: event.tokenID,
                 value: BigUInt(event.tokenValue),
-                tokenInfo: event.tokenName.isEmpty && event.tokenSymbol.isEmpty ? nil : TokenInfo(tokenName: event.tokenName, tokenSymbol: event.tokenSymbol, tokenDecimal: 1)
+                tokenInfo: event.tokenName.isEmpty && event.tokenSymbol.isEmpty
+                    ? nil
+                    : TokenInfo(
+                        tokenName: event.tokenName,
+                        tokenSymbol: event.tokenSymbol,
+                        tokenDecimal: 1
+                    )
             )
 
             map[event.hash] = (map[event.hash] ?? []) + [eventInstance]

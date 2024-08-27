@@ -9,10 +9,14 @@ import Foundation
 
 import GRDB
 
+// MARK: - NftType
+
 public enum NftType: String {
     case eip721
     case eip1155
 }
+
+// MARK: DatabaseValueConvertible
 
 extension NftType: DatabaseValueConvertible {
     public var databaseValue: DatabaseValue {

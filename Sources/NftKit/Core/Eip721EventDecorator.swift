@@ -9,6 +9,8 @@ import Foundation
 
 import EvmKit
 
+// MARK: - Eip721EventDecorator
+
 class Eip721EventDecorator {
     private let userAddress: Address
     private let storage: Storage
@@ -18,6 +20,8 @@ class Eip721EventDecorator {
         self.storage = storage
     }
 }
+
+// MARK: IEventDecorator
 
 extension Eip721EventDecorator: IEventDecorator {
     public func contractEventInstancesMap(transactions: [Transaction]) -> [Data: [ContractEventInstance]] {
@@ -41,8 +45,14 @@ extension Eip721EventDecorator: IEventDecorator {
                 contractAddress: event.contractAddress,
                 from: event.from,
                 to: event.to,
-                tokenId: event.tokenId,
-                tokenInfo: event.tokenName.isEmpty && event.tokenSymbol.isEmpty ? nil : TokenInfo(tokenName: event.tokenName, tokenSymbol: event.tokenSymbol, tokenDecimal: event.tokenDecimal)
+                tokenID: event.tokenID,
+                tokenInfo: event.tokenName.isEmpty && event.tokenSymbol.isEmpty
+                    ? nil
+                    : TokenInfo(
+                        tokenName: event.tokenName,
+                        tokenSymbol: event.tokenSymbol,
+                        tokenDecimal: event.tokenDecimal
+                    )
             )
 
             map[event.hash] = (map[event.hash] ?? []) + [eventInstance]

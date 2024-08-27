@@ -11,6 +11,8 @@ import BigInt
 import EvmKit
 import WWExtensions
 
+// MARK: - DataProvider
+
 class DataProvider {
     private let evmKit: EvmKit.Kit
 
@@ -20,13 +22,19 @@ class DataProvider {
 }
 
 extension DataProvider {
-    func getEip721Owner(contractAddress: Address, tokenId: BigUInt) async throws -> Address {
-        let data = try await evmKit.fetchCall(contractAddress: contractAddress, data: Eip721OwnerOfMethod(tokenId: tokenId).encodedABI())
+    func getEip721Owner(contractAddress: Address, tokenID: BigUInt) async throws -> Address {
+        let data = try await evmKit.fetchCall(
+            contractAddress: contractAddress,
+            data: Eip721OwnerOfMethod(tokenID: tokenID).encodedABI()
+        )
         return Address(raw: data)
     }
 
-    func getEip1155Balance(contractAddress: Address, owner: Address, tokenId: BigUInt) async throws -> Int {
-        let data = try await evmKit.fetchCall(contractAddress: contractAddress, data: Eip1155BalanceOfMethod(owner: owner, tokenId: tokenId).encodedABI())
+    func getEip1155Balance(contractAddress: Address, owner: Address, tokenID: BigUInt) async throws -> Int {
+        let data = try await evmKit.fetchCall(
+            contractAddress: contractAddress,
+            data: Eip1155BalanceOfMethod(owner: owner, tokenID: tokenID).encodedABI()
+        )
 
         guard let value = BigUInt(data.prefix(32).ww.hex, radix: 16) else {
             throw ContractCallError.invalidBalanceData
@@ -35,6 +43,8 @@ extension DataProvider {
         return Int(value)
     }
 }
+
+// MARK: DataProvider.ContractCallError
 
 extension DataProvider {
     enum ContractCallError: Error {

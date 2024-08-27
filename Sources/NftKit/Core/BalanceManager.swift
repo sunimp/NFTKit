@@ -5,18 +5,21 @@
 //  Created by Sun on 2024/8/21.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 import BigInt
 import EvmKit
 import WWExtensions
 
+// MARK: - BalanceManager
+
 class BalanceManager {
     private let storage: Storage
     private let syncManager: BalanceSyncManager
 
-    @PostPublished private(set) var nftBalances: [NftBalance] = []
+    @PostPublished
+    private(set) var nftBalances: [NftBalance] = []
 
     init(storage: Storage, syncManager: BalanceSyncManager) {
         self.storage = storage
@@ -47,8 +50,8 @@ class BalanceManager {
 }
 
 extension BalanceManager {
-    func nftBalance(contractAddress: Address, tokenId: BigUInt) -> NftBalance? {
-        try? storage.existingNftBalance(contractAddress: contractAddress, tokenId: tokenId)
+    func nftBalance(contractAddress: Address, tokenID: BigUInt) -> NftBalance? {
+        try? storage.existingNftBalance(contractAddress: contractAddress, tokenID: tokenID)
     }
 
     func didSync(nfts: [Nft], type: NftType) {
@@ -57,6 +60,8 @@ extension BalanceManager {
         }
     }
 }
+
+// MARK: IBalanceSyncManagerDelegate
 
 extension BalanceManager: IBalanceSyncManagerDelegate {
     func didFinishSyncBalances() {

@@ -102,7 +102,7 @@ sendSingle
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/sunimp/NftKit.Swift.git", .upToNextMajor(from: "2.0.4"))
+    .package(url: "https://github.com/sunimp/NftKit.Swift.git", .upToNextMajor(from: "2.0.6"))
 ]
 ```
 

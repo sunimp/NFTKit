@@ -13,15 +13,15 @@ import EvmKit
 public class Eip1155SafeTransferFromDecoration: TransactionDecoration {
     public let contractAddress: Address
     public let to: Address
-    public let tokenId: BigUInt
+    public let tokenID: BigUInt
     public let value: BigUInt
     public let sentToSelf: Bool
     public let tokenInfo: TokenInfo?
 
-    init(contractAddress: Address, to: Address, tokenId: BigUInt, value: BigUInt, sentToSelf: Bool, tokenInfo: TokenInfo?) {
+    init(contractAddress: Address, to: Address, tokenID: BigUInt, value: BigUInt, sentToSelf: Bool, tokenInfo: TokenInfo?) {
         self.contractAddress = contractAddress
         self.to = to
-        self.tokenId = tokenId
+        self.tokenID = tokenID
         self.value = value
         self.sentToSelf = sentToSelf
         self.tokenInfo = tokenInfo

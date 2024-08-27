@@ -5,11 +5,13 @@
 //  Created by Sun on 2024/8/21.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 import BigInt
 import EvmKit
+
+// MARK: - Kit
 
 public class Kit {
     private let evmKit: EvmKit.Kit
@@ -19,7 +21,13 @@ public class Kit {
     private let storage: Storage
     private var cancellables = Set<AnyCancellable>()
 
-    init(evmKit: EvmKit.Kit, balanceManager: BalanceManager, balanceSyncManager: BalanceSyncManager, transactionManager: TransactionManager, storage: Storage) {
+    init(
+        evmKit: EvmKit.Kit,
+        balanceManager: BalanceManager,
+        balanceSyncManager: BalanceSyncManager,
+        transactionManager: TransactionManager,
+        storage: Storage
+    ) {
         self.evmKit = evmKit
         self.balanceManager = balanceManager
         self.balanceSyncManager = balanceSyncManager
@@ -45,33 +53,45 @@ public class Kit {
     }
 }
 
-public extension Kit {
-    func sync() {
+extension Kit {
+    public func sync() {
         if case .synced = evmKit.syncState {
             balanceSyncManager.sync()
         }
     }
 
-    var nftBalances: [NftBalance] {
+    public var nftBalances: [NftBalance] {
         balanceManager.nftBalances
     }
 
-    var nftBalancesPublisher: AnyPublisher<[NftBalance], Never> {
+    public var nftBalancesPublisher: AnyPublisher<[NftBalance], Never> {
         balanceManager.$nftBalances
     }
 
-    func nftBalance(contractAddress: Address, tokenId: BigUInt) -> NftBalance? {
-        balanceManager.nftBalance(contractAddress: contractAddress, tokenId: tokenId)
+    public func nftBalance(contractAddress: Address, tokenID: BigUInt) -> NftBalance? {
+        balanceManager.nftBalance(contractAddress: contractAddress, tokenID: tokenID)
     }
 
-    func transferEip721TransactionData(contractAddress: Address, to: Address, tokenId: BigUInt) -> TransactionData {
-        transactionManager.transferEip721TransactionData(contractAddress: contractAddress, to: to, tokenId: tokenId)
+    public func transferEip721TransactionData(contractAddress: Address, to: Address, tokenID: BigUInt) -> TransactionData {
+        transactionManager.transferEip721TransactionData(contractAddress: contractAddress, to: to, tokenID: tokenID)
     }
 
-    func transferEip1155TransactionData(contractAddress: Address, to: Address, tokenId: BigUInt, value: BigUInt) -> TransactionData {
-        transactionManager.transferEip1155TransactionData(contractAddress: contractAddress, to: to, tokenId: tokenId, value: value)
+    public func transferEip1155TransactionData(
+        contractAddress: Address,
+        to: Address,
+        tokenID: BigUInt,
+        value: BigUInt
+    ) -> TransactionData {
+        transactionManager.transferEip1155TransactionData(
+            contractAddress: contractAddress,
+            to: to,
+            tokenID: tokenID,
+            value: value
+        )
     }
 }
+
+// MARK: ITransactionSyncerDelegate
 
 extension Kit: ITransactionSyncerDelegate {
     func didSync(nfts: [Nft], type: NftType) {
@@ -79,35 +99,35 @@ extension Kit: ITransactionSyncerDelegate {
     }
 }
 
-public extension Kit {
-    func addEip721TransactionSyncer() {
+extension Kit {
+    public func addEip721TransactionSyncer() {
         let syncer = Eip721TransactionSyncer(provider: evmKit.transactionProvider, storage: storage)
         syncer.delegate = self
         evmKit.add(transactionSyncer: syncer)
     }
 
-    func addEip1155TransactionSyncer() {
+    public func addEip1155TransactionSyncer() {
         let syncer = Eip1155TransactionSyncer(provider: evmKit.transactionProvider, storage: storage)
         syncer.delegate = self
         evmKit.add(transactionSyncer: syncer)
     }
 
-    func addEip721Decorators() {
+    public func addEip721Decorators() {
         evmKit.add(methodDecorator: Eip721MethodDecorator(contractMethodFactories: Eip721ContractMethodFactories.shared))
         evmKit.add(eventDecorator: Eip721EventDecorator(userAddress: evmKit.address, storage: storage))
         evmKit.add(transactionDecorator: Eip721TransactionDecorator(userAddress: evmKit.address))
     }
 
-    func addEip1155Decorators() {
+    public func addEip1155Decorators() {
         evmKit.add(methodDecorator: Eip1155MethodDecorator(contractMethodFactories: Eip1155ContractMethodFactories.shared))
         evmKit.add(eventDecorator: Eip1155EventDecorator(userAddress: evmKit.address, storage: storage))
         evmKit.add(transactionDecorator: Eip1155TransactionDecorator(userAddress: evmKit.address))
     }
 }
 
-public extension Kit {
-    static func instance(evmKit: EvmKit.Kit) throws -> Kit {
-        let storage = try Storage(databaseDirectoryUrl: dataDirectoryUrl(), databaseFileName: "storage-\(evmKit.uniqueId)")
+extension Kit {
+    public static func instance(evmKit: EvmKit.Kit) throws -> Kit {
+        let storage = try Storage(databaseDirectoryURL: dataDirectoryURL(), databaseFileName: "storage-\(evmKit.uniqueID)")
 
         let dataProvider = DataProvider(evmKit: evmKit)
         let balanceSyncManager = BalanceSyncManager(address: evmKit.address, storage: storage, dataProvider: dataProvider)
@@ -128,18 +148,18 @@ public extension Kit {
         return kit
     }
 
-    static func clear(exceptFor excludedFiles: [String]) throws {
+    public static func clear(exceptFor excludedFiles: [String]) throws {
         let fileManager = FileManager.default
-        let fileUrls = try fileManager.contentsOfDirectory(at: dataDirectoryUrl(), includingPropertiesForKeys: nil)
+        let fileURLs = try fileManager.contentsOfDirectory(at: dataDirectoryURL(), includingPropertiesForKeys: nil)
 
-        for filename in fileUrls {
+        for filename in fileURLs {
             if !excludedFiles.contains(where: { filename.lastPathComponent.contains($0) }) {
                 try fileManager.removeItem(at: filename)
             }
         }
     }
 
-    private static func dataDirectoryUrl() throws -> URL {
+    private static func dataDirectoryURL() throws -> URL {
         let fileManager = FileManager.default
 
         let url = try fileManager

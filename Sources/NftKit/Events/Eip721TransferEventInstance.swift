@@ -15,14 +15,14 @@ public class Eip721TransferEventInstance: ContractEventInstance {
 
     public let from: Address
     public let to: Address
-    public let tokenId: BigUInt
+    public let tokenID: BigUInt
 
     public let tokenInfo: TokenInfo?
 
-    init(contractAddress: Address, from: Address, to: Address, tokenId: BigUInt, tokenInfo: TokenInfo? = nil) {
+    init(contractAddress: Address, from: Address, to: Address, tokenID: BigUInt, tokenInfo: TokenInfo? = nil) {
         self.from = from
         self.to = to
-        self.tokenId = tokenId
+        self.tokenID = tokenID
         self.tokenInfo = tokenInfo
 
         super.init(contractAddress: contractAddress)

@@ -17,18 +17,28 @@ class Eip1155Event: Record {
     let contractAddress: Address
     let from: Address
     let to: Address
-    let tokenId: BigUInt
+    let tokenID: BigUInt
     let tokenValue: Int
     let tokenName: String
     let tokenSymbol: String
 
-    init(hash: Data, blockNumber: Int, contractAddress: Address, from: Address, to: Address, tokenId: BigUInt, tokenValue: Int, tokenName: String, tokenSymbol: String) {
+    init(
+        hash: Data,
+        blockNumber: Int,
+        contractAddress: Address,
+        from: Address,
+        to: Address,
+        tokenID: BigUInt,
+        tokenValue: Int,
+        tokenName: String,
+        tokenSymbol: String
+    ) {
         self.hash = hash
         self.blockNumber = blockNumber
         self.contractAddress = contractAddress
         self.from = from
         self.to = to
-        self.tokenId = tokenId
+        self.tokenID = tokenID
         self.tokenValue = tokenValue
         self.tokenName = tokenName
         self.tokenSymbol = tokenSymbol
@@ -46,7 +56,7 @@ class Eip1155Event: Record {
         case contractAddress
         case from
         case to
-        case tokenId
+        case tokenID
         case tokenValue
         case tokenName
         case tokenSymbol
@@ -58,7 +68,7 @@ class Eip1155Event: Record {
         contractAddress = Address(raw: row[Columns.contractAddress])
         from = Address(raw: row[Columns.from])
         to = Address(raw: row[Columns.to])
-        tokenId = row[Columns.tokenId]
+        tokenID = row[Columns.tokenID]
         tokenValue = row[Columns.tokenValue]
         tokenName = row[Columns.tokenName]
         tokenSymbol = row[Columns.tokenSymbol]
@@ -72,7 +82,7 @@ class Eip1155Event: Record {
         container[Columns.contractAddress] = contractAddress.raw
         container[Columns.from] = from.raw
         container[Columns.to] = to.raw
-        container[Columns.tokenId] = tokenId
+        container[Columns.tokenID] = tokenID
         container[Columns.tokenValue] = tokenValue
         container[Columns.tokenName] = tokenName
         container[Columns.tokenSymbol] = tokenSymbol

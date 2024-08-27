@@ -11,6 +11,8 @@ import BigInt
 import EvmKit
 import WWExtensions
 
+// MARK: - BalanceSyncManager
+
 class BalanceSyncManager {
     private let address: Address
     private let storage: Storage
@@ -22,7 +24,7 @@ class BalanceSyncManager {
 
     private let queue = DispatchQueue(label: "com.sunimp.nft-kit.balance-sync-manager", qos: .userInitiated)
 
-    weak var delegate: IBalanceSyncManagerDelegate?
+    weak var delegate: IBalanceSyncManagerDelegate? = nil
 
     init(address: Address, storage: Storage, dataProvider: DataProvider) {
         self.address = address
@@ -47,7 +49,7 @@ class BalanceSyncManager {
 //                print("Synced balance for \(nftBalance.nft.tokenName) - \(nftBalance.nft.contractAddress) - \(nftBalance.nft.tokenId) - \(balance)")
                 balanceInfos.append((nft, balance))
             } else {
-                print("Failed to sync balance for \(nft.tokenName) - \(nft.contractAddress) - \(nft.tokenId)")
+                print("Failed to sync balance for \(nft.tokenName) - \(nft.contractAddress) - \(nft.tokenID)")
             }
         }
 
@@ -112,7 +114,7 @@ class BalanceSyncManager {
         switch nft.type {
         case .eip721:
             do {
-                let owner = try await dataProvider.getEip721Owner(contractAddress: nft.contractAddress, tokenId: nft.tokenId)
+                let owner = try await dataProvider.getEip721Owner(contractAddress: nft.contractAddress, tokenID: nft.tokenID)
                 return owner == address ? 1 : 0
             } catch {
                 if case JsonRpcResponse.ResponseError.rpcError = error {
@@ -121,8 +123,13 @@ class BalanceSyncManager {
 
                 throw error
             }
+
         case .eip1155:
-            return try await dataProvider.getEip1155Balance(contractAddress: nft.contractAddress, owner: address, tokenId: nft.tokenId)
+            return try await dataProvider.getEip1155Balance(
+                contractAddress: nft.contractAddress,
+                owner: address,
+                tokenID: nft.tokenID
+            )
         }
     }
 }

@@ -15,14 +15,14 @@ class Eip1155SafeTransferFromMethod: ContractMethod {
 
     let from: Address
     let to: Address
-    let tokenId: BigUInt
+    let tokenID: BigUInt
     let value: BigUInt
     let data: Data
 
-    init(from: Address, to: Address, tokenId: BigUInt, value: BigUInt, data: Data) {
+    init(from: Address, to: Address, tokenID: BigUInt, value: BigUInt, data: Data) {
         self.from = from
         self.to = to
-        self.tokenId = tokenId
+        self.tokenID = tokenID
         self.value = value
         self.data = data
 
@@ -30,5 +30,5 @@ class Eip1155SafeTransferFromMethod: ContractMethod {
     }
 
     override var methodSignature: String { Self.methodSignature }
-    override var arguments: [Any] { [from, to, tokenId, value, data] }
+    override var arguments: [Any] { [from, to, tokenID, value, data] }
 }

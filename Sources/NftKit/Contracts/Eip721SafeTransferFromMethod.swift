@@ -15,18 +15,18 @@ class Eip721SafeTransferFromMethod: ContractMethod {
 
     let from: Address
     let to: Address
-    let tokenId: BigUInt
+    let tokenID: BigUInt
     let data: Data
 
-    init(from: Address, to: Address, tokenId: BigUInt, data: Data) {
+    init(from: Address, to: Address, tokenID: BigUInt, data: Data) {
         self.from = from
         self.to = to
-        self.tokenId = tokenId
+        self.tokenID = tokenID
         self.data = data
 
         super.init()
     }
 
     override var methodSignature: String { Self.methodSignature }
-    override var arguments: [Any] { [from, to, tokenId, data] }
+    override var arguments: [Any] { [from, to, tokenID, data] }
 }

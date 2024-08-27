@@ -10,11 +10,13 @@ import Foundation
 import BigInt
 import EvmKit
 
+// MARK: - Eip721TransactionSyncer
+
 class Eip721TransactionSyncer {
     private let provider: ITransactionProvider
     private let storage: Storage
 
-    weak var delegate: ITransactionSyncerDelegate?
+    weak var delegate: ITransactionSyncerDelegate? = nil
 
     init(provider: ITransactionProvider, storage: Storage) {
         self.provider = provider
@@ -33,7 +35,7 @@ class Eip721TransactionSyncer {
                 contractAddress: tx.contractAddress,
                 from: tx.from,
                 to: tx.to,
-                tokenId: tx.tokenId,
+                tokenID: tx.tokenID,
                 tokenName: tx.tokenName,
                 tokenSymbol: tx.tokenSymbol,
                 tokenDecimal: tx.tokenDecimal
@@ -46,7 +48,7 @@ class Eip721TransactionSyncer {
             Nft(
                 type: .eip721,
                 contractAddress: event.contractAddress,
-                tokenId: event.tokenId,
+                tokenID: event.tokenID,
                 tokenName: event.tokenName
             )
         })
@@ -54,6 +56,8 @@ class Eip721TransactionSyncer {
         delegate?.didSync(nfts: Array(nfts), type: .eip721)
     }
 }
+
+// MARK: ITransactionSyncer
 
 extension Eip721TransactionSyncer: ITransactionSyncer {
     func transactions() async throws -> ([Transaction], Bool) {
