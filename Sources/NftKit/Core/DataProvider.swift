@@ -22,18 +22,18 @@ class DataProvider {
 }
 
 extension DataProvider {
-    func getEip721Owner(contractAddress: Address, tokenID: BigUInt) async throws -> Address {
+    func getEip721Owner(contractAddress: Address, tokenId: BigUInt) async throws -> Address {
         let data = try await evmKit.fetchCall(
             contractAddress: contractAddress,
-            data: Eip721OwnerOfMethod(tokenID: tokenID).encodedABI()
+            data: Eip721OwnerOfMethod(tokenId: tokenId).encodedABI()
         )
         return Address(raw: data)
     }
 
-    func getEip1155Balance(contractAddress: Address, owner: Address, tokenID: BigUInt) async throws -> Int {
+    func getEip1155Balance(contractAddress: Address, owner: Address, tokenId: BigUInt) async throws -> Int {
         let data = try await evmKit.fetchCall(
             contractAddress: contractAddress,
-            data: Eip1155BalanceOfMethod(owner: owner, tokenID: tokenID).encodedABI()
+            data: Eip1155BalanceOfMethod(owner: owner, tokenId: tokenId).encodedABI()
         )
 
         guard let value = BigUInt(data.prefix(32).ww.hex, radix: 16) else {

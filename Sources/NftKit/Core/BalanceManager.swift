@@ -50,8 +50,8 @@ class BalanceManager {
 }
 
 extension BalanceManager {
-    func nftBalance(contractAddress: Address, tokenID: BigUInt) -> NftBalance? {
-        try? storage.existingNftBalance(contractAddress: contractAddress, tokenID: tokenID)
+    func nftBalance(contractAddress: Address, tokenId: BigUInt) -> NftBalance? {
+        try? storage.existingNftBalance(contractAddress: contractAddress, tokenId: tokenId)
     }
 
     func didSync(nfts: [Nft], type: NftType) {

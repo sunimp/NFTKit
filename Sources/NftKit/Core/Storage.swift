@@ -16,10 +16,10 @@ import GRDB
 class Storage {
     private let dbPool: DatabasePool
 
-    init(databaseDirectoryURL: URL, databaseFileName: String) {
-        let databaseURL = databaseDirectoryURL.appendingPathComponent("\(databaseFileName).sqlite")
+    init(databaseDirectoryUrl: URL, databaseFileName: String) {
+        let databaseUrl = databaseDirectoryUrl.appendingPathComponent("\(databaseFileName).sqlite")
 
-        dbPool = try! DatabasePool(path: databaseURL.path)
+        dbPool = try! DatabasePool(path: databaseUrl.path)
 
         try? migrator.migrate(dbPool)
     }
@@ -31,12 +31,12 @@ class Storage {
             try db.create(table: NftBalance.databaseTableName) { t in
                 t.column(NftBalance.Columns.type.name, .text).notNull()
                 t.column(NftBalance.Columns.contractAddress.name, .text).notNull()
-                t.column(NftBalance.Columns.tokenID.name, .text).notNull()
+                t.column(NftBalance.Columns.tokenId.name, .text).notNull()
                 t.column(NftBalance.Columns.tokenName.name, .text).notNull()
                 t.column(NftBalance.Columns.balance.name, .integer).notNull()
                 t.column(NftBalance.Columns.synced.name, .boolean).notNull()
 
-                t.primaryKey([NftBalance.Columns.contractAddress.name, NftBalance.Columns.tokenID.name], onConflict: .replace)
+                t.primaryKey([NftBalance.Columns.contractAddress.name, NftBalance.Columns.tokenId.name], onConflict: .replace)
             }
         }
 
@@ -47,7 +47,7 @@ class Storage {
                 t.column(Eip721Event.Columns.contractAddress.name, .text).notNull()
                 t.column(Eip721Event.Columns.from.name, .text).notNull()
                 t.column(Eip721Event.Columns.to.name, .text).notNull()
-                t.column(Eip721Event.Columns.tokenID.name, .text).notNull()
+                t.column(Eip721Event.Columns.tokenId.name, .text).notNull()
                 t.column(Eip721Event.Columns.tokenName.name, .text).notNull()
                 t.column(Eip721Event.Columns.tokenSymbol.name, .text).notNull()
                 t.column(Eip721Event.Columns.tokenDecimal.name, .text).notNull()
@@ -61,7 +61,7 @@ class Storage {
                 t.column(Eip1155Event.Columns.contractAddress.name, .text).notNull()
                 t.column(Eip1155Event.Columns.from.name, .text).notNull()
                 t.column(Eip1155Event.Columns.to.name, .text).notNull()
-                t.column(Eip1155Event.Columns.tokenID.name, .text).notNull()
+                t.column(Eip1155Event.Columns.tokenId.name, .text).notNull()
                 t.column(Eip1155Event.Columns.tokenValue.name, .integer).notNull()
                 t.column(Eip1155Event.Columns.tokenName.name, .text).notNull()
                 t.column(Eip1155Event.Columns.tokenSymbol.name, .text).notNull()
@@ -79,7 +79,7 @@ class Storage {
     private func filter(nft: Nft) -> SQLSpecificExpressible {
         let conditions: [SQLSpecificExpressible] = [
             NftBalance.Columns.contractAddress == nft.contractAddress.raw,
-            NftBalance.Columns.tokenID == nft.tokenID,
+            NftBalance.Columns.tokenId == nft.tokenId,
         ]
 
         return conditions.joined(operator: .and)
@@ -105,12 +105,12 @@ extension Storage {
         }
     }
 
-    func existingNftBalance(contractAddress: Address, tokenID: BigUInt) throws -> NftBalance? {
+    func existingNftBalance(contractAddress: Address, tokenId: BigUInt) throws -> NftBalance? {
         try dbPool.read { db in
             try NftBalance
                 .filter(
                     NftBalance.Columns.contractAddress == contractAddress.raw && NftBalance.Columns
-                        .tokenID == tokenID && NftBalance.Columns.balance > 0
+                        .tokenId == tokenId && NftBalance.Columns.balance > 0
                 ).fetchOne(db)
         }
     }

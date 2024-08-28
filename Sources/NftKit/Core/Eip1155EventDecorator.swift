@@ -46,7 +46,7 @@ extension Eip1155EventDecorator: IEventDecorator {
                 contractAddress: event.contractAddress,
                 from: event.from,
                 to: event.to,
-                tokenID: event.tokenID,
+                tokenId: event.tokenId,
                 value: BigUInt(event.tokenValue),
                 tokenInfo: event.tokenName.isEmpty && event.tokenSymbol.isEmpty
                     ? nil

@@ -31,7 +31,7 @@ public class NftBalance: Record {
     enum Columns: String, ColumnExpression {
         case type
         case contractAddress
-        case tokenID
+        case tokenId
         case tokenName
         case balance
         case synced
@@ -41,7 +41,7 @@ public class NftBalance: Record {
         nft = Nft(
             type: row[Columns.type],
             contractAddress: Address(raw: row[Columns.contractAddress]),
-            tokenID: row[Columns.tokenID],
+            tokenId: row[Columns.tokenId],
             tokenName: row[Columns.tokenName]
         )
         balance = row[Columns.balance]
@@ -53,7 +53,7 @@ public class NftBalance: Record {
     override public func encode(to container: inout PersistenceContainer) throws {
         container[Columns.type] = nft.type
         container[Columns.contractAddress] = nft.contractAddress.raw
-        container[Columns.tokenID] = nft.tokenID
+        container[Columns.tokenId] = nft.tokenId
         container[Columns.tokenName] = nft.tokenName
         container[Columns.balance] = balance
         container[Columns.synced] = synced

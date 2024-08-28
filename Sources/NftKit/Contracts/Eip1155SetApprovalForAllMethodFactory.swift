@@ -11,7 +11,7 @@ import BigInt
 import EvmKit
 
 class Eip1155SetApprovalForAllMethodFactory: IContractMethodFactory {
-    let methodID: Data = ContractMethodHelper.methodID(signature: Eip1155SetApprovalForAllMethod.methodSignature)
+    let methodId: Data = ContractMethodHelper.methodId(signature: Eip1155SetApprovalForAllMethod.methodSignature)
 
     func createMethod(inputArguments: Data) throws -> ContractMethod {
         Eip1155SetApprovalForAllMethod(

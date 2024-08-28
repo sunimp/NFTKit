@@ -22,15 +22,15 @@ public class Eip1155TransferEventInstance: ContractEventInstance {
 
     public let from: Address
     public let to: Address
-    public let tokenID: BigUInt
+    public let tokenId: BigUInt
     public let value: BigUInt
 
     public let tokenInfo: TokenInfo?
 
-    init(contractAddress: Address, from: Address, to: Address, tokenID: BigUInt, value: BigUInt, tokenInfo: TokenInfo? = nil) {
+    init(contractAddress: Address, from: Address, to: Address, tokenId: BigUInt, value: BigUInt, tokenInfo: TokenInfo? = nil) {
         self.from = from
         self.to = to
-        self.tokenID = tokenID
+        self.tokenId = tokenId
         self.value = value
         self.tokenInfo = tokenInfo
 

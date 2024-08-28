@@ -11,12 +11,12 @@ import BigInt
 import EvmKit
 
 class Eip721OwnerOfMethod: ContractMethod {
-    private let tokenID: BigUInt
+    private let tokenId: BigUInt
 
-    init(tokenID: BigUInt) {
-        self.tokenID = tokenID
+    init(tokenId: BigUInt) {
+        self.tokenId = tokenId
     }
 
     override var methodSignature: String { "ownerOf(uint256)" }
-    override var arguments: [Any] { [tokenID] }
+    override var arguments: [Any] { [tokenId] }
 }

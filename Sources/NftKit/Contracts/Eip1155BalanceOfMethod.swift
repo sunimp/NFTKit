@@ -12,13 +12,13 @@ import EvmKit
 
 class Eip1155BalanceOfMethod: ContractMethod {
     private let owner: Address
-    private let tokenID: BigUInt
+    private let tokenId: BigUInt
 
-    init(owner: Address, tokenID: BigUInt) {
+    init(owner: Address, tokenId: BigUInt) {
         self.owner = owner
-        self.tokenID = tokenID
+        self.tokenId = tokenId
     }
 
     override var methodSignature: String { "balanceOf(address,uint256)" }
-    override var arguments: [Any] { [owner, tokenID] }
+    override var arguments: [Any] { [owner, tokenId] }
 }

@@ -11,13 +11,13 @@ import BigInt
 import EvmKit
 
 class Eip1155SafeTransferFromMethodFactory: IContractMethodFactory {
-    let methodID: Data = ContractMethodHelper.methodID(signature: Eip1155SafeTransferFromMethod.methodSignature)
+    let methodId: Data = ContractMethodHelper.methodId(signature: Eip1155SafeTransferFromMethod.methodSignature)
 
     func createMethod(inputArguments: Data) throws -> ContractMethod {
         Eip1155SafeTransferFromMethod(
             from: Address(raw: inputArguments[12 ..< 32]),
             to: Address(raw: inputArguments[44 ..< 64]),
-            tokenID: BigUInt(inputArguments[64 ..< 96]),
+            tokenId: BigUInt(inputArguments[64 ..< 96]),
             value: BigUInt(inputArguments[96 ..< 128]),
             data: inputArguments[128 ..< 160]
         )

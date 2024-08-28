@@ -68,24 +68,24 @@ extension Kit {
         balanceManager.$nftBalances
     }
 
-    public func nftBalance(contractAddress: Address, tokenID: BigUInt) -> NftBalance? {
-        balanceManager.nftBalance(contractAddress: contractAddress, tokenID: tokenID)
+    public func nftBalance(contractAddress: Address, tokenId: BigUInt) -> NftBalance? {
+        balanceManager.nftBalance(contractAddress: contractAddress, tokenId: tokenId)
     }
 
-    public func transferEip721TransactionData(contractAddress: Address, to: Address, tokenID: BigUInt) -> TransactionData {
-        transactionManager.transferEip721TransactionData(contractAddress: contractAddress, to: to, tokenID: tokenID)
+    public func transferEip721TransactionData(contractAddress: Address, to: Address, tokenId: BigUInt) -> TransactionData {
+        transactionManager.transferEip721TransactionData(contractAddress: contractAddress, to: to, tokenId: tokenId)
     }
 
     public func transferEip1155TransactionData(
         contractAddress: Address,
         to: Address,
-        tokenID: BigUInt,
+        tokenId: BigUInt,
         value: BigUInt
     ) -> TransactionData {
         transactionManager.transferEip1155TransactionData(
             contractAddress: contractAddress,
             to: to,
-            tokenID: tokenID,
+            tokenId: tokenId,
             value: value
         )
     }
@@ -127,7 +127,7 @@ extension Kit {
 
 extension Kit {
     public static func instance(evmKit: EvmKit.Kit) throws -> Kit {
-        let storage = try Storage(databaseDirectoryURL: dataDirectoryURL(), databaseFileName: "storage-\(evmKit.uniqueID)")
+        let storage = try Storage(databaseDirectoryUrl: dataDirectoryUrl(), databaseFileName: "storage-\(evmKit.uniqueId)")
 
         let dataProvider = DataProvider(evmKit: evmKit)
         let balanceSyncManager = BalanceSyncManager(address: evmKit.address, storage: storage, dataProvider: dataProvider)
@@ -150,16 +150,16 @@ extension Kit {
 
     public static func clear(exceptFor excludedFiles: [String]) throws {
         let fileManager = FileManager.default
-        let fileURLs = try fileManager.contentsOfDirectory(at: dataDirectoryURL(), includingPropertiesForKeys: nil)
+        let fileUrls = try fileManager.contentsOfDirectory(at: dataDirectoryUrl(), includingPropertiesForKeys: nil)
 
-        for filename in fileURLs {
+        for filename in fileUrls {
             if !excludedFiles.contains(where: { filename.lastPathComponent.contains($0) }) {
                 try fileManager.removeItem(at: filename)
             }
         }
     }
 
-    private static func dataDirectoryURL() throws -> URL {
+    private static func dataDirectoryUrl() throws -> URL {
         let fileManager = FileManager.default
 
         let url = try fileManager

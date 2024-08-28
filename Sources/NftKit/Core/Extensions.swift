@@ -24,7 +24,7 @@ extension TransactionLog {
                 contractAddress: address,
                 from: Address(raw: from),
                 to: Address(raw: to),
-                tokenID: BigUInt(data)
+                tokenId: BigUInt(data)
             )
         }
 

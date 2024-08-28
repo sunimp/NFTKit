@@ -16,7 +16,7 @@ class Eip1155TransactionSyncer {
     private let provider: ITransactionProvider
     private let storage: Storage
 
-    weak var delegate: ITransactionSyncerDelegate? = nil
+    weak var delegate: ITransactionSyncerDelegate?
 
     init(provider: ITransactionProvider, storage: Storage) {
         self.provider = provider
@@ -35,7 +35,7 @@ class Eip1155TransactionSyncer {
                 contractAddress: tx.contractAddress,
                 from: tx.from,
                 to: tx.to,
-                tokenID: tx.tokenID,
+                tokenId: tx.tokenId,
                 tokenValue: tx.tokenValue,
                 tokenName: tx.tokenName,
                 tokenSymbol: tx.tokenSymbol
@@ -48,7 +48,7 @@ class Eip1155TransactionSyncer {
             Nft(
                 type: .eip1155,
                 contractAddress: event.contractAddress,
-                tokenID: event.tokenID,
+                tokenId: event.tokenId,
                 tokenName: event.tokenName
             )
         })

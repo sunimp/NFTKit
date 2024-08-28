@@ -15,13 +15,13 @@ import EvmKit
 public struct Nft {
     public let type: NftType
     public let contractAddress: Address
-    public let tokenID: BigUInt
+    public let tokenId: BigUInt
     public let tokenName: String
 
-    init(type: NftType, contractAddress: Address, tokenID: BigUInt, tokenName: String) {
+    init(type: NftType, contractAddress: Address, tokenId: BigUInt, tokenName: String) {
         self.type = type
         self.contractAddress = contractAddress
-        self.tokenID = tokenID
+        self.tokenId = tokenId
         self.tokenName = tokenName
     }
 }
@@ -32,7 +32,7 @@ extension Nft: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(type)
         hasher.combine(contractAddress.raw)
-        hasher.combine(tokenID)
+        hasher.combine(tokenId)
     }
 }
 
@@ -40,6 +40,6 @@ extension Nft: Hashable {
 
 extension Nft: Equatable {
     public static func == (lhs: Nft, rhs: Nft) -> Bool {
-        lhs.type == rhs.type && lhs.contractAddress == rhs.contractAddress && lhs.tokenID == rhs.tokenID
+        lhs.type == rhs.type && lhs.contractAddress == rhs.contractAddress && lhs.tokenId == rhs.tokenId
     }
 }

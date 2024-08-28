@@ -40,7 +40,7 @@ extension Eip1155TransactionDecorator: ITransactionDecorator {
                 return Eip1155SafeTransferFromDecoration(
                     contractAddress: to,
                     to: transferMethod.to,
-                    tokenID: transferMethod.tokenID,
+                    tokenId: transferMethod.tokenId,
                     value: transferMethod.value,
                     sentToSelf: transferMethod.to == userAddress,
                     tokenInfo: eventInstances.compactMap { $0 as? Eip1155TransferEventInstance }

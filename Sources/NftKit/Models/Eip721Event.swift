@@ -17,7 +17,7 @@ class Eip721Event: Record {
     let contractAddress: Address
     let from: Address
     let to: Address
-    let tokenID: BigUInt
+    let tokenId: BigUInt
     let tokenName: String
     let tokenSymbol: String
     let tokenDecimal: Int
@@ -28,7 +28,7 @@ class Eip721Event: Record {
         contractAddress: Address,
         from: Address,
         to: Address,
-        tokenID: BigUInt,
+        tokenId: BigUInt,
         tokenName: String,
         tokenSymbol: String,
         tokenDecimal: Int
@@ -38,7 +38,7 @@ class Eip721Event: Record {
         self.contractAddress = contractAddress
         self.from = from
         self.to = to
-        self.tokenID = tokenID
+        self.tokenId = tokenId
         self.tokenName = tokenName
         self.tokenSymbol = tokenSymbol
         self.tokenDecimal = tokenDecimal
@@ -56,7 +56,7 @@ class Eip721Event: Record {
         case contractAddress
         case from
         case to
-        case tokenID
+        case tokenId
         case tokenName
         case tokenSymbol
         case tokenDecimal
@@ -68,7 +68,7 @@ class Eip721Event: Record {
         contractAddress = Address(raw: row[Columns.contractAddress])
         from = Address(raw: row[Columns.from])
         to = Address(raw: row[Columns.to])
-        tokenID = row[Columns.tokenID]
+        tokenId = row[Columns.tokenId]
         tokenName = row[Columns.tokenName]
         tokenSymbol = row[Columns.tokenSymbol]
         tokenDecimal = row[Columns.tokenDecimal]
@@ -82,7 +82,7 @@ class Eip721Event: Record {
         container[Columns.contractAddress] = contractAddress.raw
         container[Columns.from] = from.raw
         container[Columns.to] = to.raw
-        container[Columns.tokenID] = tokenID
+        container[Columns.tokenId] = tokenId
         container[Columns.tokenName] = tokenName
         container[Columns.tokenSymbol] = tokenSymbol
         container[Columns.tokenDecimal] = tokenDecimal

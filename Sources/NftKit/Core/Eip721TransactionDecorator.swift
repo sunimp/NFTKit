@@ -40,7 +40,7 @@ extension Eip721TransactionDecorator: ITransactionDecorator {
                 return Eip721SafeTransferFromDecoration(
                     contractAddress: to,
                     to: transferMethod.to,
-                    tokenID: transferMethod.tokenID,
+                    tokenId: transferMethod.tokenId,
                     sentToSelf: transferMethod.to == userAddress,
                     tokenInfo: eventInstances.compactMap { $0 as? Eip721TransferEventInstance }
                         .first { $0.contractAddress == to }?.tokenInfo

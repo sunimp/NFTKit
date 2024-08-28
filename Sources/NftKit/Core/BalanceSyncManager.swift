@@ -24,7 +24,7 @@ class BalanceSyncManager {
 
     private let queue = DispatchQueue(label: "com.sunimp.nft-kit.balance-sync-manager", qos: .userInitiated)
 
-    weak var delegate: IBalanceSyncManagerDelegate? = nil
+    weak var delegate: IBalanceSyncManagerDelegate?
 
     init(address: Address, storage: Storage, dataProvider: DataProvider) {
         self.address = address
@@ -49,7 +49,7 @@ class BalanceSyncManager {
 //                print("Synced balance for \(nftBalance.nft.tokenName) - \(nftBalance.nft.contractAddress) - \(nftBalance.nft.tokenId) - \(balance)")
                 balanceInfos.append((nft, balance))
             } else {
-                print("Failed to sync balance for \(nft.tokenName) - \(nft.contractAddress) - \(nft.tokenID)")
+                print("Failed to sync balance for \(nft.tokenName) - \(nft.contractAddress) - \(nft.tokenId)")
             }
         }
 
@@ -114,7 +114,7 @@ class BalanceSyncManager {
         switch nft.type {
         case .eip721:
             do {
-                let owner = try await dataProvider.getEip721Owner(contractAddress: nft.contractAddress, tokenID: nft.tokenID)
+                let owner = try await dataProvider.getEip721Owner(contractAddress: nft.contractAddress, tokenId: nft.tokenId)
                 return owner == address ? 1 : 0
             } catch {
                 if case JsonRpcResponse.ResponseError.rpcError = error {
@@ -128,7 +128,7 @@ class BalanceSyncManager {
             return try await dataProvider.getEip1155Balance(
                 contractAddress: nft.contractAddress,
                 owner: address,
-                tokenID: nft.tokenID
+                tokenId: nft.tokenId
             )
         }
     }
