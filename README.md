@@ -1,6 +1,6 @@
-# NftKit.Swift
+# NFTKit.Swift
 
-`NftKit.Swift` extends `EvmKit.Swift` to support `EIP721` and `EIP1155` non-fungible tokens(NFT).
+`NFTKit.Swift` extends `EVMKit.Swift` to support `EIP721` and `EIP1155` non-fungible tokens(NFT).
 
 ## Features
 
@@ -13,27 +13,27 @@
 ### Initialization
 
 ```swift
-import EvmKit
-import NftKit
+import EVMKit
+import NFTKit
 
 let evmKit = try Kit.instance(
-	address: try EvmKit.Address(hex: "0x..user..address.."),
+	address: try EVMKit.Address(hex: "0x..user..address.."),
 	chain: .ethereum,
 	rpcSource: .ethereumInfuraWebsocket(projectId: "...", projectSecret: "..."),
 	transactionSource: .ethereumEtherscan(apiKey: "..."),
-	walletId: "unique_wallet_id",
+	walletID: "unique_wallet_id",
 	minLogLevel: .error
 )
 
-let nftKit = try NftKit.Kit.instance(evmKit: evmKit)
+let nftKit = try NFTKit.Kit.instance(evmKit: evmKit)
 
 // Decorators are needed to detect transactions as `Uniswap` transactions
-nftKit.addEip721Decorators()
-nftKit.addEip1155Decorators()
+nftKit.addEIP721Decorators()
+nftKit.addEIP1155Decorators()
 
 // Transaction syncers are needed to pull the NFT transfer transactions from Etherscan
-nftKit.addEip721TransactionSyncer()
-nftKit.addEip1155TransactionSyncer()
+nftKit.addEIP721TransactionSyncer()
+nftKit.addEIP1155TransactionSyncer()
 ```
 
 ### Get NFTs owned by the user
@@ -56,13 +56,13 @@ for nftBalance in balances {
 let seed = Mnemonic.seed(mnemonic: ["mnemonic", "words", ...])!
 let signer = try Signer.instance(seed: seed, chain: .ethereum)
 
-let nftContractAddress = try EvmKit.Address(hex: "0x..contract..address")
+let nftContractAddress = try EVMKit.Address(hex: "0x..contract..address")
 let tokenId = BigUInt("234123894712031638516723498")
-let to = try EvmKit.Address(hex: "0x..recipient..address")
+let to = try EVMKit.Address(hex: "0x..recipient..address")
 let gasPrice = GasPrice.legacy(gasPrice: 50_000_000_000)
 
 // Construct a TransactionData
-let transactionData = nftKit.transferEip721TransactionData(contractAddress: nftContractAddress, to: to, tokenId: tokenId)
+let transactionData = nftKit.transferEIP721TransactionData(contractAddress: nftContractAddress, to: to, tokenId: tokenId)
 
 // Estimate gas for the transaction
 let estimateGasSingle = evmKit.estimateGas(transactionData: transactionData, gasPrice: gasPrice)
@@ -94,7 +94,11 @@ sendSingle
     )
     .disposed(by: disposeBag)
 ```
+## Requirements
 
+* Xcode 15.4+
+* Swift 5.10+
+* iOS 14.0+
 
 ## Installation
 
@@ -102,11 +106,11 @@ sendSingle
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/sunimp/NftKit.Swift.git", .upToNextMajor(from: "2.0.7"))
+    .package(url: "https://github.com/sunimp/NFTKit.Swift.git", .upToNextMajor(from: "2.3.0"))
 ]
 ```
 
 ## License
 
-The `NftKit.Swift` toolkit is open source and available under the terms of the [MIT License](https://github.com/sunimp/NftKit.Swift/blob/master/LICENSE).
+The `NFTKit.Swift` toolkit is open source and available under the terms of the [MIT License](https://github.com/sunimp/NFTKit.Swift/blob/main/LICENSE).
 

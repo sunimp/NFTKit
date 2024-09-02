@@ -1,6 +1,6 @@
 //
 //  TransactionsController.swift
-//  NftKit-Example
+//  NFTKit-Example
 //
 //  Created by Sun on 2024/8/21.
 //

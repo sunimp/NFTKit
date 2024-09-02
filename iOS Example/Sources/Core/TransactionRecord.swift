@@ -1,13 +1,13 @@
 //
 //  TransactionRecord.swift
-//  NftKit-Example
+//  NFTKit-Example
 //
 //  Created by Sun on 2024/8/21.
 //
 
 import Foundation
 
-import EvmKit
+import EVMKit
 
 struct TransactionRecord {
     let transactionHash: String

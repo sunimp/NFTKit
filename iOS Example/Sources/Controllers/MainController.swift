@@ -1,13 +1,13 @@
 //
 //  MainController.swift
-//  NftKit-Example
+//  NFTKit-Example
 //
 //  Created by Sun on 2024/8/21.
 //
 
 import UIKit
 
-import EvmKit
+import EVMKit
 
 class MainController: UITabBarController {
     override func viewDidLoad() {

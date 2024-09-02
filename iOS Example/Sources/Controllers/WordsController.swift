@@ -1,15 +1,15 @@
 //
 //  WordsController.swift
-//  NftKit-Example
+//  NFTKit-Example
 //
 //  Created by Sun on 2024/8/21.
 //
 
 import UIKit
 
-import EvmKit
+import EVMKit
 import HDWalletKit
-import NftKit
+import NFTKit
 import SnapKit
 import UIExtensions
 
@@ -29,7 +29,7 @@ class WordsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "NftKit Demo"
+        title = "NFTKit Demo"
 
         let wordsDescriptionLabel = UILabel()
 

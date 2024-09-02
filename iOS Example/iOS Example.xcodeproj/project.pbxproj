@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
+		A46C3A2B2C85CC0A00EE8C17 /* NFTKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46C3A2A2C85CC0A00EE8C17 /* NFTKit */; };
 		A47FB00A2C6E011400230DDD /* UIExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = A47FB0092C6E011400230DDD /* UIExtensions */; };
-		D3500A2728ED564A0093A369 /* NftKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3500A2628ED564A0093A369 /* NftKit */; };
 		D36AAAC923A237940065B32B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36AAAAF23A237940065B32B /* Configuration.swift */; };
 		D36AAACA23A237940065B32B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36AAAB023A237940065B32B /* Assets.xcassets */; };
 		D36AAACB23A237940065B32B /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36AAAB223A237940065B32B /* Manager.swift */; };
@@ -27,7 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		607FACD01AFB9204008FA782 /* NftKit Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NftKit Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		607FACD01AFB9204008FA782 /* NFTKit Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NFTKit Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D36AAAAF23A237940065B32B /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -50,8 +50,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A46C3A2B2C85CC0A00EE8C17 /* NFTKit in Frameworks */,
 				A47FB00A2C6E011400230DDD /* UIExtensions in Frameworks */,
-				D3500A2728ED564A0093A369 /* NftKit in Frameworks */,
 				D36DFC2928EBDF5B00D2FC62 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,7 +71,7 @@
 		607FACD11AFB9204008FA782 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				607FACD01AFB9204008FA782 /* NftKit Demo.app */,
+				607FACD01AFB9204008FA782 /* NFTKit Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,11 +163,11 @@
 			name = "iOS Example";
 			packageProductDependencies = (
 				D36DFC2828EBDF5B00D2FC62 /* SnapKit */,
-				D3500A2628ED564A0093A369 /* NftKit */,
 				A47FB0092C6E011400230DDD /* UIExtensions */,
+				A46C3A2A2C85CC0A00EE8C17 /* NFTKit */,
 			);
 			productName = EthereumKit;
-			productReference = 607FACD01AFB9204008FA782 /* NftKit Demo.app */;
+			productReference = 607FACD01AFB9204008FA782 /* NFTKit Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -183,7 +183,6 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = HC4MCAXJ66;
 						LastSwiftMigration = 0900;
 					};
 				};
@@ -359,7 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HC4MCAXJ66;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Sources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -368,7 +367,7 @@
 				);
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sunimp.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "NftKit Demo";
+				PRODUCT_NAME = "NFTKit Demo";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -382,7 +381,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HC4MCAXJ66;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Sources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -391,7 +390,7 @@
 				);
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sunimp.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "NftKit Demo";
+				PRODUCT_NAME = "NFTKit Demo";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -444,14 +443,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A46C3A2A2C85CC0A00EE8C17 /* NFTKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NFTKit;
+		};
 		A47FB0092C6E011400230DDD /* UIExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A47FB0082C6E011400230DDD /* XCRemoteSwiftPackageReference "UIExtensions.Swift" */;
 			productName = UIExtensions;
-		};
-		D3500A2628ED564A0093A369 /* NftKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = NftKit;
 		};
 		D36DFC2828EBDF5B00D2FC62 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

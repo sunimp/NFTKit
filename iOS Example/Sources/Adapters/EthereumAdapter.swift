@@ -1,6 +1,6 @@
 //
 //  EthereumAdapter.swift
-//  NftKit-Example
+//  NFTKit-Example
 //
 //  Created by Sun on 2024/8/21.
 //
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 import BigInt
-import EvmKit
+import EVMKit
 
 class EthereumAdapter {
     private let evmKit: Kit
