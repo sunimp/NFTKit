@@ -106,7 +106,7 @@ sendSingle
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/sunimp/NFTKit.Swift.git", .upToNextMajor(from: "2.3.0"))
+    .package(url: "https://github.com/sunimp/NFTKit.Swift.git", .upToNextMajor(from: "2.4.0"))
 ]
 ```
 
