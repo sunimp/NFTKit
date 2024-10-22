@@ -1,14 +1,15 @@
 //
 //  DataProvider.swift
+//  NFTKit
 //
-//  Created by Sun on 2024/8/15.
+//  Created by Sun on 2022/8/25.
 //
 
 import Foundation
 
 import BigInt
 import EVMKit
-import WWExtensions
+import SWExtensions
 
 // MARK: - DataProvider
 
@@ -39,7 +40,7 @@ extension DataProvider {
             data: EIP1155BalanceOfMethod(owner: owner, tokenID: tokenID).encodedABI()
         )
 
-        guard let value = BigUInt(data.prefix(32).ww.hex, radix: 16) else {
+        guard let value = BigUInt(data.prefix(32).sw.hex, radix: 16) else {
             throw ContractCallError.invalidBalanceData
         }
 
